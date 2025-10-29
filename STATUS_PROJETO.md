@@ -1,32 +1,20 @@
 # Status do Projeto - Gestor Empresarial
 
 ## ✅ Concluído
-- [x] Documentação inicial do projeto
-- [x] Definição da stack tecnológica
-- [x] Estrutura de pastas planejada
-- [x] Setup inicial do projeto Node.js + Express (JavaScript)
-- [x] Configuração básica do servidor Express
-- [x] Configuração do MySQL + Prisma
-- [x] Criação do schema inicial (notas fiscais)
-- [x] Implementação das rotas CRUD para notas fiscais
-- [x] Documentação Swagger configurada
-- [x] Coleção Postman criada
-- [x] Sistema de autenticação JWT implementado
-- [x] Modelo de usuário criado
-- [x] Rotas de login/registro criadas
-- [x] Middleware de autenticação criado
-- [x] Frontend React + Vite + Tailwind criado
-- [x] Tela de login implementada
-- [x] Dashboard básico criado
-- [x] Integração com API de autenticação
-- [x] Migração para Vue.js concluída
-- [x] Tela de login moderna em Vue
-- [x] Dashboard em Vue implementado
-- [x] Migração para Nuxt.js concluída
-- [x] SSR e roteamento automático configurado
+- [x] Sistema completo de autenticação JWT
+- [x] API RESTful com documentação Swagger
+- [x] Frontend Nuxt.js com Tailwind CSS
+- [x] Tela de login moderna e responsiva
+- [x] Dashboard administrativo
+- [x] Calendário MEI interativo
+- [x] Validação de formulários em tempo real
+- [x] Layout sidebar responsivo
+- [x] Links diretos para geração de DAS
+- [x] Configuração completa do ambiente
+- [x] Sistema testado e funcionando
 
 ## 🔄 Em Andamento
-- [ ] Nenhuma tarefa em andamento
+- [ ] CRUD de notas fiscais no frontend
 
 ## 📋 Próximos Passos
 
@@ -36,11 +24,11 @@
 - [x] Criação do schema inicial (notas fiscais)
 - [x] Implementação das rotas CRUD para notas fiscais
 
-### Fase 2 - Frontend Base
-- [ ] Setup do React + Vite + Tailwind
-- [ ] Configuração do Axios
-- [ ] Tela de cadastro de notas fiscais
+### Fase 2 - CRUD Notas Fiscais
+- [x] Backend CRUD completo
 - [ ] Tela de listagem de notas fiscais
+- [ ] Tela de cadastro de notas fiscais
+- [ ] Tela de edição de notas fiscais
 
 ### Fase 3 - Produtos e Estoque
 - [ ] Schema de produtos no banco
@@ -55,7 +43,7 @@
 - [ ] Relatórios
 
 ## 🎯 Próxima Tarefa
-**Testar frontend de login**
+**Implementar CRUD de notas fiscais no frontend**
 
 ## 🚀 Para rodar o sistema completo:
 
@@ -71,7 +59,7 @@ npm run dev
 ```bash
 cd frontend
 npm install
-npm run dev
+npm run dev -- --port 3001
 ```
 
 ## 🌐 URLs de Acesso:
