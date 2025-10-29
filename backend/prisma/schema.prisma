@@ -1,0 +1,36 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model Usuario {
+  id        Int      @id @default(autoincrement())
+  nome      String
+  email     String   @unique
+  senha     String
+  perfil    String   @default("usuario") // "admin", "financeiro", "vendas", "usuario"
+  ativo     Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("usuarios")
+}
+
+model NotaFiscal {
+  id          Int      @id @default(autoincrement())
+  numero      String   @unique
+  tipo        String   // "entrada" ou "saida"
+  valor       Decimal  @db.Decimal(10, 2)
+  data        DateTime
+  fornecedor  String?  // Para notas de entrada
+  cliente     String?  // Para notas de saída
+  observacoes String?  @db.Text
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("notas_fiscais")
+}
