@@ -39,29 +39,14 @@ jobs:
         echo "DATABASE_URL=mysql://root:root@localhost:3306/gestor_empresarial" > .env
         echo "JWT_SECRET=test-secret-key" >> .env
         npx prisma migrate deploy
-        nohup npm run dev > backend.log 2>&1 &
-        echo "Aguardando backend iniciar..."
-        for i in {1..30}; do
-          if curl -s http://localhost:3000 > /dev/null; then
-            echo "Backend iniciado!"
-            break
-          fi
-          sleep 2
-        done
     
     - name: Setup Frontend
       run: |
         cd frontend
         npm install
-        nohup npm run dev -- --port 3001 > frontend.log 2>&1 &
-        echo "Aguardando frontend iniciar..."
-        for i in {1..30}; do
-          if curl -s http://localhost:3001 > /dev/null; then
-            echo "Frontend iniciado!"
-            break
-          fi
-          sleep 2
-        done
+    
+    - name: Start Services
+      run: ./start-services.sh
     
     - name: Install Playwright
       run: npx playwright install chromium
