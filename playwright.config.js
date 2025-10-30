@@ -20,16 +20,5 @@ export default defineConfig({
       use: { ...devices['Desktop Chrome'] },
     },
   ],
-  webServer: [
-    {
-      command: 'cd backend && npm run dev',
-      port: 3000,
-      reuseExistingServer: !process.env.CI,
-    },
-    {
-      command: 'cd frontend && npm run dev -- --port 3001',
-      port: 3001,
-      reuseExistingServer: !process.env.CI,
-    },
-  ],
+  // webServer configurado manualmente na pipeline
 });
