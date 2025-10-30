@@ -12,3 +12,7 @@ CREATE TABLE `usuarios` (
     UNIQUE INDEX `usuarios_email_key`(`email`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
+INSERT INTO gestor_empresarial.usuarios (nome,email,senha,perfil,ativo,createdAt,updatedAt) VALUES
+	 ('Admin','admin@empresa.com','$2a$10$oGEhjszbiuf./arkLI4W7ekRDPx.GqVsQXywTW1aKNWPVx5CUkfAC','admin',1,'2025-10-29 11:57:23.717','2025-10-29 11:57:23.717');
+
