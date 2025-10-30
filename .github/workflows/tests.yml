@@ -39,41 +39,28 @@ jobs:
         echo "DATABASE_URL=mysql://root:root@localhost:3306/gestor_empresarial" > .env
         echo "JWT_SECRET=test-secret-key" >> .env
         npx prisma migrate deploy
+        node -e "
+        const { PrismaClient } = require('@prisma/client');
+        const bcrypt = require('bcryptjs');
+        const prisma = new PrismaClient();
+        (async () => {
+          const hash = await bcrypt.hash('123456', 10);
+          await prisma.usuario.create({
+            data: { nome: 'Admin', email: 'admin@empresa.com', senha: hash, perfil: 'admin' }
+          });
+          await prisma.\$disconnect();
+        })();
+        "
+        npm run dev &
     
     - name: Setup Frontend
       run: |
         cd frontend
         npm install
+        npm run dev -- --port 3001 &
     
-    - name: Setup database
+    - name: Wait and test
       run: |
-        cd backend
-        echo "DATABASE_URL=mysql://root:root@localhost:3306/gestor_empresarial" > .env
-        echo "JWT_SECRET=test-secret-key" >> .env
-        npx prisma migrate deploy
-    
-    - name: Setup and start services
-      run: ./ci-setup.sh
-    
-    - name: Install Playwright
-      run: npx playwright install chromium
-    
-    - name: Debug services
-      run: |
-        echo "=== Backend logs ==="
-        tail -20 backend.log || echo "No backend logs"
-        echo "=== Frontend logs ==="
-        tail -20 frontend.log || echo "No frontend logs"
-        echo "=== Port check ==="
-        lsof -i :3000 || echo "Port 3000 not in use"
-        lsof -i :3001 || echo "Port 3001 not in use"
-    
-    - name: Run tests
-      run: npm test
-    
-    - name: Upload test results
-      uses: actions/upload-artifact@v4
-      if: always()
-      with:
-        name: playwright-report
-        path: playwright-report/
+        sleep 30
+        npx playwright install chromium
+        npm test
