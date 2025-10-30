@@ -140,12 +140,21 @@ O sistema inclui um calendário interativo com:
 - **Validação em tempo real** nos formulários
 - **Responsivo** para mobile e desktop
 
-## 🧪 Testes Automatizados
+## 🧪 Testes Locais
 
 - **19 casos de teste** implementados com Playwright
 - **Cobertura completa** da tela de login
-- **Testes de validação**, autenticação, responsividade e acessibilidade
-- **Documentação detalhada** de regras de negócio
+- **Execução local** de testes de validação, autenticação e responsividade
+
+### Executar Testes
+```bash
+# Iniciar serviços manualmente
+cd backend && npm run dev  # Terminal 1
+cd frontend && npm run dev -- --port 3001  # Terminal 2
+
+# Executar testes
+npm test
+```
 
 ## 📝 Próximos Passos
 

@@ -21,7 +21,6 @@
 
 ## 🔄 Em Andamento
 - [ ] CRUD de notas fiscais no frontend
-- [ ] Melhorias nos testes baseadas em execução
 
 ## 📋 Próximos Passos
 
@@ -50,7 +49,7 @@
 - [ ] Relatórios
 
 ## 🎯 Próxima Tarefa
-**Executar e refinar testes automatizados**
+**Implementar CRUD de notas fiscais no frontend**
 
 ## 🧪 Testes Implementados
 - **19 casos de teste** cobrindo:
