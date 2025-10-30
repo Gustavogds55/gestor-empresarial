@@ -6,6 +6,13 @@ echo "🔧 CI Setup - Iniciando configuração..."
 # Criar usuário de teste
 echo "👤 Criando usuário de teste..."
 cd backend
+
+# Configurar .env se não existir
+if [ ! -f .env ]; then
+    echo "DATABASE_URL=mysql://root:root@localhost:3306/gestor_empresarial" > .env
+    echo "JWT_SECRET=test-secret-key" >> .env
+    echo "✅ .env configurado"
+fi
 node -e "
 const { PrismaClient } = require('@prisma/client');
 const bcrypt = require('bcryptjs');
