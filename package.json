@@ -5,9 +5,14 @@
     "test": "playwright test",
     "test:ui": "playwright test --ui",
     "test:headed": "playwright test --headed",
-    "test:debug": "playwright test --debug"
+    "test:debug": "playwright test --debug",
+    "test:ci": "playwright test --reporter=github",
+    "setup:backend": "cd backend && npm ci && npx prisma migrate deploy",
+    "setup:frontend": "cd frontend && npm ci",
+    "start:services": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev -- --port 3001\""
   },
   "devDependencies": {
-    "@playwright/test": "^1.40.0"
+    "@playwright/test": "^1.40.0",
+    "concurrently": "^8.2.2"
   }
 }

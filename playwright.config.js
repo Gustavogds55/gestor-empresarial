@@ -4,13 +4,15 @@ export default defineConfig({
   testDir: './tests',
   fullyParallel: false,
   forbidOnly: !!process.env.CI,
-  retries: 0,
-  workers: 1,
-  reporter: 'list',
+  retries: process.env.CI ? 2 : 0,
+  workers: process.env.CI ? 1 : 1,
+  reporter: process.env.CI ? [['github'], ['html']] : 'list',
   use: {
     baseURL: 'http://localhost:3001',
-    trace: 'off',
-    screenshot: 'off',
+    trace: process.env.CI ? 'retain-on-failure' : 'off',
+    screenshot: process.env.CI ? 'only-on-failure' : 'off',
+    actionTimeout: 10000,
+    navigationTimeout: 30000,
   },
   projects: [
     {
