@@ -1,0 +1,59 @@
+name: Tests
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: gestor_empresarial
+        ports:
+          - 3306:3306
+        options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
+
+    steps:
+    - uses: actions/checkout@v4
+    
+    - name: Setup Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+        cache: 'npm'
+    
+    - name: Install dependencies
+      run: |
+        cd backend && npm ci
+        cd ../frontend && npm ci
+        npm ci
+    
+    - name: Setup database
+      run: |
+        cd backend
+        echo "DATABASE_URL=mysql://root:root@localhost:3306/gestor_empresarial" > .env
+        echo "JWT_SECRET=test-secret-key" >> .env
+        npx prisma db push
+        node -e "
+        const { PrismaClient } = require('@prisma/client');
+        const bcrypt = require('bcrypt');
+        const prisma = new PrismaClient();
+        (async () => {
+          const senha = await bcrypt.hash('123456', 10);
+          await prisma.usuario.create({
+            data: { nome: 'Admin', email: 'admin@empresa.com', senha, perfil: 'admin' }
+          });
+          await prisma.\$disconnect();
+        })();"
+    
+    - name: Start services and run tests
+      run: |
+        cd backend && npm run dev &
+        cd frontend && npm run dev -- --port 3001 &
+        sleep 10
+        npm test
