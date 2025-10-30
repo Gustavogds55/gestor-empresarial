@@ -32,6 +32,7 @@ jobs:
         cd backend && npm ci
         cd ../frontend && npm ci
         npm ci
+        npx playwright install
     
     - name: Setup database
       run: |
@@ -44,5 +45,5 @@ jobs:
       run: |
         cd backend && npm run dev &
         cd frontend && npm run dev -- --port 3001 &
-        sleep 10
-        npm test
+        sleep 15
+        npx playwright test
