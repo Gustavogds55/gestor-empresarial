@@ -2,7 +2,7 @@ name: Tests
 
 on:
   push:
-    branches: main 
+    branches: [main]
 
 jobs:
   test:
@@ -19,48 +19,48 @@ jobs:
         options: --health-cmd="mysqladmin ping" --health-interval=10s --health-timeout=5s --health-retries=3
 
     steps:
-    - uses: actions/checkout@v4
-    
-    - name: Setup Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '20'
-        cache: 'npm'
-    
-    - name: Install dependencies
-      run: |
-        npm ci
-        cd backend && npm ci
-        cd ../frontend && npm ci
-        npx playwright install
-    
-    - name: Setup database
-      run: |
-        cd backend
-        echo "DATABASE_URL=mysql://root:root@localhost:3306/gestor_empresarial" > .env
-        echo "JWT_SECRET=test-secret-key" >> .env
-        npx prisma db push
-    
-    - name: Start Backend
-      run: cd backend && npm run dev &
-    
-    - name: Start Frontend
-      run: cd frontend && npm run dev -- --port 3001 &
-    
-    - name: Wait for Backend
-      run: |
-        echo "Waiting for backend..."
-        timeout 60 bash -c 'until curl -f http://localhost:3000/; do sleep 2; done'
-    
-    - name: Wait for Frontend
-      run: |
-        echo "Waiting for frontend..."
-        timeout 60 bash -c 'until curl -f http://localhost:3001; do sleep 2; done'
-    
-    - name: Run Tests
-      run: npx playwright test
-    
-    - name: Stop Services
-      if: always()
-      run: |
-        pkill -f "npm run dev" || true
+      - uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      - name: Install dependencies
+        run: |
+          npm ci
+          cd backend && npm ci
+          cd ../frontend && npm ci
+          npx playwright install
+      
+      - name: Setup database
+        run: |
+          cd backend
+          echo "DATABASE_URL=mysql://root:root@localhost:3306/gestor_empresarial" > .env
+          echo "JWT_SECRET=test-secret-key" >> .env
+          npx prisma db push
+      
+      - name: Start Backend
+        run: cd backend && npm run dev &
+      
+      - name: Start Frontend
+        run: cd frontend && npm run dev -- --port 3001 &
+      
+      - name: Wait for Backend
+        run: |
+          echo "Waiting for backend..."
+          timeout 60 bash -c 'until curl -f http://localhost:3000/; do sleep 2; done'
+      
+      - name: Wait for Frontend
+        run: |
+          echo "Waiting for frontend..."
+          timeout 60 bash -c 'until curl -f http://localhost:3001; do sleep 2; done'
+      
+      - name: Run Tests
+        run: npx playwright test
+      
+      - name: Stop Services
+        if: always()
+        run: |
+          pkill -f "npm run dev" || true
