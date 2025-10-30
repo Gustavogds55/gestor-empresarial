@@ -201,11 +201,17 @@ watch(() => formData.email, () => {
   if (emailError.value) {
     validateEmail()
   }
+  if (error.value) {
+    error.value = ''
+  }
 })
 
 watch(() => formData.senha, () => {
   if (senhaError.value) {
     validateSenha()
+  }
+  if (error.value) {
+    error.value = ''
   }
 })
 
@@ -347,6 +353,9 @@ const handleSubmit = async () => {
   error.value = ''
 
   try {
+    // Pequeno delay para testes capturarem o estado de loading
+    await new Promise(resolve => setTimeout(resolve, 100))
+    
     const response = await $api.post('/auth/login', formData)
     const { token, usuario } = response.data
     

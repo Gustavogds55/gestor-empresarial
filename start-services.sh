@@ -18,8 +18,14 @@ cd ..
 
 # Aguardar serviços
 echo "Aguardando serviços iniciarem..."
-sleep 20
+sleep 30
 
-echo "✅ Serviços iniciados!"
-echo "Backend: http://localhost:3000"
-echo "Frontend: http://localhost:3001"
+# Verificar se estão funcionando
+if curl -s http://localhost:3000 > /dev/null && curl -s http://localhost:3001 > /dev/null; then
+    echo "✅ Serviços iniciados!"
+    echo "Backend: http://localhost:3000"
+    echo "Frontend: http://localhost:3001"
+else
+    echo "❌ Erro ao iniciar serviços"
+    echo "Verifique os logs manualmente"
+fi
