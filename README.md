@@ -140,6 +140,13 @@ O sistema inclui um calendário interativo com:
 - **Validação em tempo real** nos formulários
 - **Responsivo** para mobile e desktop
 
+## 🧪 Testes Automatizados
+
+- **19 casos de teste** implementados com Playwright
+- **Cobertura completa** da tela de login
+- **Testes de validação**, autenticação, responsividade e acessibilidade
+- **Documentação detalhada** de regras de negócio
+
 ## 📝 Próximos Passos
 
 1. Implementar CRUD completo de notas fiscais no frontend

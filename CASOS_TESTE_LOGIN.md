@@ -200,3 +200,38 @@
   - Cada tentativa funciona independentemente
   - Sem travamento da interface
   - Estados corretos a cada tentativa
+
+## CT-LOGIN-018: Email Excede Limite
+**Cenário**: Validar limite de 50 caracteres no email
+- **Pré-condições**: Tela de login carregada
+- **Passos**:
+  1. Digitar email com mais de 50 caracteres
+  2. Fazer blur no campo
+- **Resultado Esperado**: 
+  - Mensagem "Email deve ter no máximo 50 caracteres"
+  - Campo não aceita mais de 50 caracteres
+  - Validação em tempo real
+
+## CT-LOGIN-019: Senha Excede Limite
+**Cenário**: Validar limite de 8 caracteres na senha
+- **Pré-condições**: Tela de login carregada
+- **Passos**:
+  1. Preencher email válido
+  2. Digitar senha com mais de 8 caracteres
+  3. Fazer blur no campo senha
+- **Resultado Esperado**: 
+  - Mensagem "Senha deve ter no máximo 8 caracteres"
+  - Campo não aceita mais de 8 caracteres
+  - Validação em tempo real
+
+## CT-LOGIN-020: Links Externos Funcionando
+**Cenário**: Verificar funcionalidade dos links externos
+- **Pré-condições**: Tela de login carregada com obrigações DAS
+- **Passos**:
+  1. Localizar links "Gerar DAS"
+  2. Verificar atributos do link
+  3. Validar URL de destino
+- **Resultado Esperado**: 
+  - Link tem target="_blank"
+  - URL aponta para site da Receita Federal
+  - Link é válido (formato https)

@@ -21,6 +21,7 @@
               <input
                 v-model="formData.email"
                 type="email"
+                maxlength="50"
                 @blur="validateEmail"
                 class="w-full pl-12 pr-4 py-3 bg-blue-50/50 border border-blue-200/50 rounded-xl text-blue-900 placeholder-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent transition-all duration-200 text-sm"
                 placeholder="Email"
@@ -41,6 +42,7 @@
               <input
                 v-model="formData.senha"
                 type="password"
+                maxlength="8"
                 @blur="validateSenha"
                 class="w-full pl-12 pr-4 py-3 bg-blue-50/50 border border-blue-200/50 rounded-xl text-blue-900 placeholder-blue-400 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:border-transparent transition-all duration-200 text-sm"
                 placeholder="Senha"
@@ -176,6 +178,8 @@ const senhaError = ref('')
 const validateEmail = () => {
   if (!formData.email) {
     emailError.value = 'Campo obrigatório'
+  } else if (formData.email.length > 50) {
+    emailError.value = 'Email deve ter no máximo 50 caracteres'
   } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
     emailError.value = 'Email inválido'
   } else {
@@ -186,6 +190,8 @@ const validateEmail = () => {
 const validateSenha = () => {
   if (!formData.senha) {
     senhaError.value = 'Campo obrigatório'
+  } else if (formData.senha.length > 8) {
+    senhaError.value = 'Senha deve ter no máximo 8 caracteres'
   } else {
     senhaError.value = ''
   }

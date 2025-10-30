@@ -6,10 +6,10 @@ export class LoginPage {
     this.emailInput = page.locator('input[type="email"]');
     this.passwordInput = page.locator('input[type="password"]');
     this.submitButton = page.locator('button[type="submit"]');
-    this.emailError = page.locator('text=Campo obrigatório').first();
-    this.emailInvalidError = page.locator('text=Email inválido');
-    this.passwordError = page.locator('text=Campo obrigatório').last();
-    this.loginError = page.locator('.bg-red-50\\/80');
+    this.emailError = page.locator('.text-red-500.text-xs').first();
+    this.emailInvalidError = page.locator('.text-red-500.text-xs:has-text("Email inválido")');
+    this.passwordError = page.locator('.text-red-500.text-xs').last();
+    this.loginError = page.locator('.bg-red-50\\/80 p');
     this.loadingButton = page.locator('text=Entrando...');
     this.spinner = page.locator('.animate-spin');
     

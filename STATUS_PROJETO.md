@@ -12,9 +12,16 @@
 - [x] Links diretos para geração de DAS
 - [x] Configuração completa do ambiente
 - [x] Sistema testado e funcionando
+- [x] Suíte de testes automatizados Playwright
+- [x] 19 casos de teste implementados
+- [x] Regras de negócio documentadas
+- [x] Testes de validação extrema
+- [x] Testes de acessibilidade
+- [x] Testes de responsividade
 
 ## 🔄 Em Andamento
 - [ ] CRUD de notas fiscais no frontend
+- [ ] Melhorias nos testes baseadas em execução
 
 ## 📋 Próximos Passos
 
@@ -43,7 +50,18 @@
 - [ ] Relatórios
 
 ## 🎯 Próxima Tarefa
-**Implementar CRUD de notas fiscais no frontend**
+**Executar e refinar testes automatizados**
+
+## 🧪 Testes Implementados
+- **19 casos de teste** cobrindo:
+  - Validações de campos (obrigatórios, formato, tempo real)
+  - Autenticação (credenciais válidas/inválidas, loading)
+  - Layout responsivo (mobile, tablet, desktop)
+  - Calendário MEI (estrutura, obrigações, links)
+  - Acessibilidade (navegação por teclado)
+  - Persistência (localStorage, múltiplas tentativas)
+  - Validações extremas (emails/senhas longas)
+  - Links externos (Receita Federal)
 
 ## 🚀 Para rodar o sistema completo:
 
