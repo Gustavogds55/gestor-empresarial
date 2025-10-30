@@ -30,12 +30,12 @@ jobs:
         cache: 'npm'
     
     - name: Install dependencies
-      run: npm ci
+      run: npm install
     
     - name: Setup Backend
       run: |
         cd backend
-        npm ci
+        npm install
         echo "DATABASE_URL=mysql://root:root@localhost:3306/gestor_empresarial" > .env
         echo "JWT_SECRET=test-secret-key" >> .env
         npx prisma migrate deploy
@@ -45,7 +45,7 @@ jobs:
     - name: Setup Frontend
       run: |
         cd frontend
-        npm ci
+        npm install
         npm run dev -- --port 3001 &
         sleep 15
     

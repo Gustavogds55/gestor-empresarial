@@ -7,8 +7,8 @@
     "test:headed": "playwright test --headed",
     "test:debug": "playwright test --debug",
     "test:ci": "playwright test --reporter=github",
-    "setup:backend": "cd backend && npm ci && npx prisma migrate deploy",
-    "setup:frontend": "cd frontend && npm ci",
+    "setup:backend": "cd backend && npm install && npx prisma migrate deploy",
+    "setup:frontend": "cd frontend && npm install",
     "start:services": "concurrently \"cd backend && npm run dev\" \"cd frontend && npm run dev -- --port 3001\""
   },
   "devDependencies": {
