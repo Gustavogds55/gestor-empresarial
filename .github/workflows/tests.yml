@@ -45,11 +45,21 @@ jobs:
         cd frontend
         npm install
     
-    - name: Start Services
-      run: ./start-services.sh
+    - name: Setup and start services
+      run: ./ci-setup.sh
     
     - name: Install Playwright
       run: npx playwright install chromium
+    
+    - name: Debug services
+      run: |
+        echo "=== Backend logs ==="
+        tail -20 backend.log || echo "No backend logs"
+        echo "=== Frontend logs ==="
+        tail -20 frontend.log || echo "No frontend logs"
+        echo "=== Port check ==="
+        lsof -i :3000 || echo "Port 3000 not in use"
+        lsof -i :3001 || echo "Port 3001 not in use"
     
     - name: Run tests
       run: npm test
