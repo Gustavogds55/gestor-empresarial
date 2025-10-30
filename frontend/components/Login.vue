@@ -362,6 +362,15 @@ const handleSubmit = async () => {
     localStorage.setItem('token', token)
     localStorage.setItem('usuario', JSON.stringify(usuario))
     
+    // Aguardar próximo tick para garantir que localStorage foi persistido
+    await nextTick()
+    
+    // Limpar erro de login
+    error.value = ''
+    
+    // Adicionar atributo no body para testes detectarem
+    document.body.setAttribute('data-login-complete', 'true')
+    
     emit('login', usuario)
   } catch (err) {
     error.value = err.response?.data?.error || 'Erro ao fazer login'

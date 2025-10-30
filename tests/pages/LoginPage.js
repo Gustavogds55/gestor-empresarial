@@ -70,6 +70,15 @@ export class LoginPage {
   }
 
   async clearLocalStorage() {
-    await this.page.evaluate(() => localStorage.clear());
+    await this.page.evaluate(() => {
+      localStorage.clear();
+      document.body.removeAttribute('data-login-complete');
+    });
+  }
+
+  async waitForLoginComplete() {
+    await this.page.waitForFunction(() => {
+      return document.body.getAttribute('data-login-complete') === 'true';
+    }, { timeout: 10000 });
   }
 }

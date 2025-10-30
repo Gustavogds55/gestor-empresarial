@@ -130,6 +130,7 @@ test.describe('Login - Autenticação', () => {
     
     // Aguardar conclusão
     await loginPage.waitForLoadingToDisappear();
+    await loginPage.waitForLoginComplete();
     
     // Verificar localStorage
     const token = await loginPage.getLocalStorageToken();
@@ -306,6 +307,7 @@ test.describe('Login - Persistência e Estados', () => {
   test('deve manter dados no localStorage após login', async ({ page }) => {
     await loginPage.login('admin@empresa.com', '123456');
     await loginPage.waitForLoadingToDisappear();
+    await loginPage.waitForLoginComplete();
     
     // Recarregar página
     await page.reload();
@@ -355,6 +357,7 @@ test.describe('Login - Persistência e Estados', () => {
     // Terceira tentativa - válida
     await loginPage.login('admin@empresa.com', '123456');
     await loginPage.waitForLoadingToDisappear();
+    await loginPage.waitForLoginComplete();
     
     const token = await loginPage.getLocalStorageToken();
     expect(token).toBeTruthy();
