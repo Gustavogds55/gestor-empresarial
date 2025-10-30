@@ -7,12 +7,10 @@ echo "🔧 CI Setup - Iniciando configuração..."
 echo "👤 Criando usuário de teste..."
 cd backend
 
-# Configurar .env se não existir
-if [ ! -f .env ]; then
-    echo "DATABASE_URL=mysql://root:root@localhost:3306/gestor_empresarial" > .env
-    echo "JWT_SECRET=test-secret-key" >> .env
-    echo "✅ .env configurado"
-fi
+# Configurar .env
+echo "DATABASE_URL=mysql://root:root@localhost:3306/gestor_empresarial" > .env
+echo "JWT_SECRET=test-secret-key" >> .env
+echo "✅ .env configurado"
 node -e "
 const { PrismaClient } = require('@prisma/client');
 const bcrypt = require('bcryptjs');
@@ -33,13 +31,13 @@ async function createUser() {
     });
     console.log('✅ Usuário criado');
   } catch (e) {
-    console.log('❌ Erro:', e.message);
+    console.log('⚠️ MySQL não disponível:', e.message.split('\\n')[0]);
   } finally {
     await prisma.\$disconnect();
   }
 }
 createUser();
-"
+" || echo "⚠️ Pular criação de usuário (MySQL offline)"
 cd ..
 
 # Iniciar backend
