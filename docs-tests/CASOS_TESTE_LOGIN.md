@@ -119,39 +119,7 @@
   - Calendário se adapta (grid responsivo)
   - Formulário permanece legível
 
-## CT-LOGIN-011: Calendário MEI - Mês Atual
-**Cenário**: Verificar exibição do calendário
-- **Pré-condições**: Tela de login carregada
-- **Passos**:
-  1. Observar cabeçalho do calendário
-  2. Verificar destaque do dia atual
-  3. Verificar dias com obrigações marcados
-- **Resultado Esperado**: 
-  - Mês/ano atual exibidos
-  - Dia atual destacado em azul
-  - Dias com DAS marcados com ponto vermelho
 
-## CT-LOGIN-012: Calendário MEI - Obrigações do Mês
-**Cenário**: Verificar lista de obrigações
-- **Pré-condições**: Tela de login carregada
-- **Passos**:
-  1. Observar seção "Obrigações do Mês"
-  2. Verificar cards de obrigações
-  3. Clicar em "Gerar DAS" (se disponível)
-- **Resultado Esperado**: 
-  - Obrigações do mês atual listadas
-  - Cards com cores diferentes (DAS=vermelho, ANUAL=azul)
-  - Link "Gerar DAS" abre em nova aba
-
-## CT-LOGIN-013: Interação com Calendário
-**Cenário**: Clicar em dias com obrigações
-- **Pré-condições**: Tela de login carregada
-- **Passos**:
-  1. Identificar dia com obrigação (ponto vermelho)
-  2. Clicar no dia
-- **Resultado Esperado**: 
-  - Console.log com informações do dia
-  - (Futuro: modal com detalhes)
 
 ## CT-LOGIN-014: Acessibilidade
 **Cenário**: Navegação por teclado
@@ -224,14 +192,14 @@
   - Campo não aceita mais de 8 caracteres
   - Validação em tempo real
 
-## CT-LOGIN-020: Links Externos Funcionando
-**Cenário**: Verificar funcionalidade dos links externos
-- **Pré-condições**: Tela de login carregada com obrigações DAS
+## CT-LOGIN-021: Validação em Tempo Real - Senha
+**Cenário**: Corrigir erro de senha durante digitação
+- **Pré-condições**: Tela de login carregada
 - **Passos**:
-  1. Localizar links "Gerar DAS"
-  2. Verificar atributos do link
-  3. Validar URL de destino
+  1. Preencher email válido
+  2. Digitar senha com mais de 8 caracteres
+  3. Fazer blur no campo senha (gerar erro)
+  4. Corrigir senha para formato válido
 - **Resultado Esperado**: 
-  - Link tem target="_blank"
-  - URL aponta para site da Receita Federal
-  - Link é válido (formato https)
+  - Erro removido automaticamente durante digitação
+  - Campo volta ao estado normal

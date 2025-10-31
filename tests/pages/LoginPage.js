@@ -13,13 +13,7 @@ export class LoginPage {
     this.loadingButton = page.locator('text=Entrando...');
     this.spinner = page.locator('.animate-spin');
     
-    // Calendário
-    this.calendarTitle = page.locator('text=Calendário de Obrigações MEI');
-    this.currentMonth = page.locator('.text-lg.font-semibold.text-blue-600');
-    this.todayCell = page.locator('.bg-blue-500.text-white.font-bold');
-    this.obligationDays = page.locator('.bg-red-100.border-red-300');
-    this.obligationsList = page.locator('text=Obrigações do Mês');
-    this.dasLink = page.locator('text=Gerar DAS');
+
   }
 
   async goto() {

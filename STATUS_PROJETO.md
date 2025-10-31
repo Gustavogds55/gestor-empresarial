@@ -4,22 +4,22 @@
 - [x] Sistema completo de autenticação JWT
 - [x] API RESTful com documentação Swagger
 - [x] Frontend Nuxt.js com Tailwind CSS
-- [x] Tela de login moderna e responsiva
-- [x] Dashboard administrativo
-- [x] Calendário MEI interativo
+- [x] Tela de login centralizada e responsiva
+- [x] Dashboard administrativo básico
 - [x] Validação de formulários em tempo real
-- [x] Layout sidebar responsivo
-- [x] Links diretos para geração de DAS
+- [x] Layout moderno com card centralizado
 - [x] Configuração completa do ambiente
 - [x] Sistema testado e funcionando
 - [x] Suíte de testes automatizados Playwright
-- [x] 19 casos de teste implementados
+- [x] 17 casos de teste implementados
 - [x] Regras de negócio documentadas
 - [x] Testes de validação extrema
 - [x] Testes de acessibilidade
 - [x] Testes de responsividade
 
 ## 🔄 Em Andamento
+- [ ] Dashboard com métricas e gráficos
+- [ ] Calendário MEI no dashboard
 - [ ] CRUD de notas fiscais no frontend
 
 ## 📋 Próximos Passos
@@ -52,15 +52,14 @@
 **Implementar CRUD de notas fiscais no frontend**
 
 ## 🧪 Testes Implementados
-- **19 casos de teste** cobrindo:
+- **17 casos de teste** cobrindo:
   - Validações de campos (obrigatórios, formato, tempo real)
   - Autenticação (credenciais válidas/inválidas, loading)
   - Layout responsivo (mobile, tablet, desktop)
-  - Calendário MEI (estrutura, obrigações, links)
   - Acessibilidade (navegação por teclado)
   - Persistência (localStorage, múltiplas tentativas)
   - Validações extremas (emails/senhas longas)
-  - Links externos (Receita Federal)
+  - Validação em tempo real (email e senha)
 
 ## 🚀 Para rodar o sistema completo:
 
@@ -88,12 +87,12 @@ npm run dev -- --port 3001
 1. Registre usuário via Swagger ou Postman
 2. Use credenciais no frontend
 
-## 📅 Funcionalidades do Calendário:
-- **Obrigações MEI** por mês
-- **DAS mensal** (vencimento dia 20)
-- **DASN-SIMEI** (março-maio)
-- **Links diretos** para geração de DAS
-- **Atualização automática** do mês atual
+## 🎯 Próxima Sprint - Dashboard:
+- **Métricas financeiras** em tempo real
+- **Calendário MEI** interativo
+- **CRUD de notas fiscais** completo
+- **Gráficos** e visualizações
+- **Cards dinâmicos** com dados reais
 
 ## 📖 Documentação Criada
 - **Swagger UI**: http://localhost:3000/api-docs

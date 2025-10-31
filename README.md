@@ -22,11 +22,10 @@ Sistema de gestão empresarial com foco em MEI (Microempreendedor Individual), d
 ### ✅ Implementadas
 - **Sistema de autenticação** completo (login/registro)
 - **API RESTful** com documentação Swagger
-- **Calendário de obrigações MEI** interativo
+- **Layout de login centralizado** e responsivo
 - **Validação de formulários** customizada
-- **Layout responsivo** com sidebar
-- **Links diretos** para geração de DAS
-- **Dashboard** administrativo
+- **Dashboard** administrativo básico
+- **17 casos de teste** automatizados com Playwright
 
 ### 🔄 Em Desenvolvimento
 - CRUD de notas fiscais
@@ -100,15 +99,15 @@ POST /api/auth/login
 }
 ```
 
-## 📅 Calendário MEI
+## 🔐 Sistema de Login
 
-O sistema inclui um calendário interativo com:
+Tela de login moderna e centralizada com:
 
-- **Obrigações mensais**: DAS com vencimento dia 20
-- **Obrigações anuais**: DASN-SIMEI (março-maio)
-- **Links diretos**: Para geração de DAS no portal da Receita
-- **Atualização automática**: Baseada na data atual
-- **Indicadores visuais**: Dias com obrigações destacados
+- **Card centralizado** com design elegante
+- **Validação em tempo real** de campos
+- **Estados de loading** durante autenticação
+- **Layout responsivo** para todos os dispositivos
+- **Feedback visual** para erros e sucessos
 
 ## 📊 API Endpoints
 
@@ -135,16 +134,17 @@ O sistema inclui um calendário interativo com:
 ## 🎨 Interface
 
 - **Design moderno** com tons de azul
-- **Layout sidebar** para login
-- **Calendário interativo** na área principal
+- **Login centralizado** com card elegante
+- **Dashboard administrativo** com navegação
 - **Validação em tempo real** nos formulários
-- **Responsivo** para mobile e desktop
+- **Totalmente responsivo** para mobile e desktop
 
-## 🧪 Testes Locais
+## 🧪 Testes Automatizados
 
-- **19 casos de teste** implementados com Playwright
-- **Cobertura completa** da tela de login
-- **Execução local** de testes de validação, autenticação e responsividade
+- **17 casos de teste** implementados com Playwright
+- **Cobertura completa** do sistema de login
+- **Testes de validação, autenticação e responsividade**
+- **Execução local** com feedback detalhado
 
 ### Executar Testes
 ```bash
@@ -158,12 +158,12 @@ npm test
 
 ## 📝 Próximos Passos
 
-1. Implementar CRUD completo de notas fiscais no frontend
-2. Adicionar gestão de produtos e estoque
-3. Criar relatórios financeiros
-4. Implementar sistema de permissões por perfil
-5. Adicionar notificações de vencimentos
-6. Integração com APIs da Receita Federal
+1. **Dashboard** - Implementar métricas e gráficos
+2. **Calendário MEI** - Mover para o dashboard pós-login
+3. **CRUD de notas fiscais** - Interface completa no frontend
+4. **Gestão de produtos** e controle de estoque
+5. **Relatórios financeiros** com visualizações
+6. **Sistema de permissões** por perfil de usuário
 
 ## 🤝 Contribuição
 

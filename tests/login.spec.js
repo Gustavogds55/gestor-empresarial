@@ -54,7 +54,7 @@ test.describe('Login - Validações de Campos', () => {
     await expect(loginPage.passwordError).toHaveText('Campo obrigatório');
   });
 
-  // CT-LOGIN-005: Validação em Tempo Real
+  // CT-LOGIN-005: Validação em Tempo Real - Email
   test('deve remover erro ao corrigir email durante digitação', async () => {
     // Gerar erro
     await loginPage.fillEmail('email-inválido');
@@ -64,6 +64,28 @@ test.describe('Login - Validações de Campos', () => {
     // Corrigir email
     await loginPage.fillEmail('usuario@empresa.com');
     await expect(loginPage.emailInvalidError).not.toBeVisible();
+  });
+
+  // CT-LOGIN-021: Validação em Tempo Real - Senha
+  test('deve remover erro ao corrigir senha durante digitação', async ({ page }) => {
+    // Remover maxlength para testar validação
+    await loginPage.passwordInput.waitFor();
+    await page.evaluate(() => {
+      const passwordInput = document.querySelector('input[type="password"]');
+      if (passwordInput) {
+        passwordInput.removeAttribute('maxlength');
+      }
+    });
+    
+    // Gerar erro - senha muito longa
+    await loginPage.fillEmail('admin@empresa.com');
+    await loginPage.fillPassword('123456789'); // 9 caracteres
+    await loginPage.blurPassword();
+    await expect(loginPage.passwordError).toBeVisible();
+    
+    // Corrigir senha
+    await loginPage.fillPassword('123456'); // 6 caracteres
+    await expect(loginPage.passwordError).not.toBeVisible();
   });
 
   // CT-LOGIN-018: Email Excede Limite (>50 caracteres)
@@ -199,71 +221,21 @@ test.describe('Login - Layout e Responsividade', () => {
     await page.setViewportSize({ width: 320, height: 568 });
     await expect(loginPage.emailInput).toBeVisible();
     await expect(loginPage.passwordInput).toBeVisible();
+    await expect(loginPage.submitButton).toBeVisible();
     
     // Tablet
     await page.setViewportSize({ width: 768, height: 1024 });
-    await expect(loginPage.calendarTitle).toBeVisible();
+    await expect(loginPage.emailInput).toBeVisible();
+    await expect(loginPage.passwordInput).toBeVisible();
     
     // Desktop
     await page.setViewportSize({ width: 1024, height: 768 });
-    await expect(loginPage.calendarTitle).toBeVisible();
-    await expect(loginPage.obligationsList).toBeVisible();
+    await expect(loginPage.emailInput).toBeVisible();
+    await expect(loginPage.passwordInput).toBeVisible();
   });
 });
 
-test.describe('Login - Calendário MEI', () => {
-  let loginPage;
 
-  test.beforeEach(async ({ page }) => {
-    loginPage = new LoginPage(page);
-    await loginPage.goto();
-  });
-
-  // CT-LOGIN-011: Calendário MEI - Mês Atual
-  test('deve exibir calendário com mês atual', async () => {
-    await expect(loginPage.calendarTitle).toBeVisible();
-    await expect(loginPage.currentMonth).toBeVisible();
-    
-    // Verificar se há dia atual destacado
-    const todayExists = await loginPage.todayCell.count();
-    expect(todayExists).toBeGreaterThanOrEqual(0);
-  });
-
-  // CT-LOGIN-012: Calendário MEI - Obrigações do Mês
-  test('deve exibir obrigações do mês', async ({ page }) => {
-    // Verificar título "Obrigações do Mês"
-    const obligationsTitle = page.locator('text=Obrigações do Mês');
-    await expect(obligationsTitle).toBeVisible();
-    
-    // Verificar se há obrigações com títulos (sempre tem DAS mensal)
-    const obligationTitles = page.locator('.font-semibold.text-gray-900');
-    const titleCount = await obligationTitles.count();
-    expect(titleCount).toBeGreaterThan(0);
-  });
-
-
-
-  // CT-LOGIN-020: Links Externos Funcionando
-  test('deve ter links externos funcionando', async ({ page, context }) => {
-    // Procurar por links "Gerar DAS"
-    const dasLinks = page.locator('text=Gerar DAS');
-    const linkCount = await dasLinks.count();
-    
-    if (linkCount > 0) {
-      // Verificar se link tem target="_blank"
-      await expect(dasLinks.first()).toHaveAttribute('target', '_blank');
-      
-      // Verificar se link tem href correto
-      const href = await dasLinks.first().getAttribute('href');
-      expect(href).toContain('receita.fazenda.gov.br');
-      
-      // Verificar se link é válido (não testar clique para não abrir site externo)
-      expect(href).toMatch(/^https?:\/\/.+/);
-    }
-  });
-
-
-});
 
 test.describe('Login - Acessibilidade', () => {
   let loginPage;

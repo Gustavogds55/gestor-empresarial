@@ -49,19 +49,11 @@
 ## RN-LOGIN-005: Interface Responsiva
 - **Descrição**: Layout deve funcionar em diferentes dispositivos
 - **Regras**:
-  - Sidebar fixa de 384px (w-96)
-  - Área principal flexível
-  - Calendário responsivo (grid adaptativo)
-  - Formulário centralizado na sidebar
+  - Card centralizado na tela
+  - Layout responsivo para mobile/tablet/desktop
+  - Formulário sempre visível e acessível
 
-## RN-LOGIN-006: Calendário MEI
-- **Descrição**: Exibir obrigações MEI do mês atual
-- **Regras**:
-  - Mostrar mês/ano atual
-  - Destacar dia atual
-  - Marcar dias com obrigações
-  - Exibir lista de obrigações do mês
-  - Links para geração de DAS
+
 
 ## RN-LOGIN-007: Estados Visuais
 - **Descrição**: Feedback visual para o usuário
@@ -87,18 +79,12 @@
   - Interface deve permanecer responsíva
   - Validações não devem causar travamentos
 
-## RN-LOGIN-010: Estrutura do Calendário
-- **Descrição**: Calendário deve ter estrutura padrão
+## RN-LOGIN-010: Validação em Tempo Real Completa
+- **Descrição**: Erros devem ser removidos automaticamente durante correção
 - **Regras**:
-  - Grid de 7 colunas (dias da semana)
-  - Cabeçalho com nomes dos dias
-  - Dias organizados em semanas
-  - Navegação visual clara
+  - Email: remover erro ao corrigir formato inválido
+  - Senha: remover erro ao corrigir tamanho inválido
+  - Validação durante digitação (não apenas blur)
+  - Feedback visual imediato
+  - Melhorar experiência do usuário
 
-## RN-LOGIN-011: Links Externos
-- **Descrição**: Links para serviços externos devem funcionar corretamente
-- **Regras**:
-  - Links "Gerar DAS" devem abrir em nova aba (target="_blank")
-  - URLs devem apontar para sites oficiais da Receita Federal
-  - Links devem ser válidos (formato https)
-  - Não comprometer segurança da aplicação

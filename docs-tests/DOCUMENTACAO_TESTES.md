@@ -2,18 +2,19 @@
 
 ## 📋 Resumo dos Testes
 
-### **Cobertura Total: 19 Casos de Teste**
+### **Cobertura Total: 17 Casos de Teste**
 
 ## 🧪 Categorias de Teste
 
-### **1. Validações de Campos (CT-001 a CT-005 + CT-018, CT-019)**
+### **1. Validações de Campos (CT-001 a CT-005 + CT-018, CT-019, CT-021)**
 - **CT-001**: Email obrigatório
 - **CT-002**: Formato de email inválido  
 - **CT-003**: Email válido
 - **CT-004**: Senha obrigatória
-- **CT-005**: Validação em tempo real
+- **CT-005**: Validação em tempo real - Email
 - **CT-018**: Email excede limite (>50 caracteres)
 - **CT-019**: Senha excede limite (>8 caracteres)
+- **CT-021**: Validação em tempo real - Senha
 
 ### **2. Autenticação (CT-006 a CT-008)**
 - **CT-006**: Login com credenciais válidas
@@ -24,10 +25,7 @@
 ### **3. Layout e Responsividade (CT-010)**
 - **CT-010**: Layout em diferentes resoluções
 
-### **4. Calendário MEI (CT-011, CT-012, CT-020)**
-- **CT-011**: Exibição do mês atual
-- **CT-012**: Lista de obrigações
-- **CT-020**: Links externos funcionando
+
 
 ### **5. Acessibilidade (CT-014)**
 - **CT-014**: Navegação por teclado
@@ -51,18 +49,15 @@
 
 ## 📊 Regras de Negócio Cobertas
 
-### **RN-LOGIN-001 a RN-LOGIN-011**
+### **RN-LOGIN-001 a RN-LOGIN-008**
 1. Validação de email
 2. Validação de senha  
 3. Submissão do formulário
 4. Autenticação
 5. Interface responsiva
-6. Calendário MEI
-7. Estados visuais
-8. Persistência de dados
-9. Validação de limites de caracteres
-10. Estrutura do calendário
-11. Links externos
+6. Estados visuais
+7. Persistência de dados
+8. Validação de limites de caracteres
 
 ## 🚀 Como Executar
 
@@ -92,22 +87,20 @@ npx playwright test --project=chromium
 - ✅ Validações de entrada
 - ✅ Fluxo de autenticação
 - ✅ Interface responsiva
-- ✅ Funcionalidades do calendário
 - ✅ Acessibilidade básica
 - ✅ Persistência de dados
 
 ### **Tipos de Teste**
-- **Funcionais**: 13 casos
+- **Funcionais**: 12 casos
 - **Interface**: 3 casos  
 - **Segurança**: 2 casos
-- **Performance**: 1 caso
 
 ## 🔍 Pontos de Atenção
 
 ### **Limitações Atuais**
-- Não testa navegação entre meses (não implementada)
 - Não testa backend offline extensivamente
 - Não testa múltiplos browsers simultaneamente
+- Calendário MEI será implementado no dashboard
 
 ### **Melhorias Futuras**
 - Testes de integração com API
