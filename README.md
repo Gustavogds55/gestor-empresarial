@@ -1,6 +1,6 @@
 # Gestor Empresarial
 
-Sistema de gestão empresarial com foco em MEI (Microempreendedor Individual), desenvolvido com Node.js, Nuxt.js e MySQL.
+Sistema de gestão de despesas com foco em MEI (Microempreendedor Individual), desenvolvido com Node.js, Nuxt.js e MySQL.
 
 ## 🚀 Tecnologias
 
@@ -24,14 +24,20 @@ Sistema de gestão empresarial com foco em MEI (Microempreendedor Individual), d
 - **API RESTful** com documentação Swagger
 - **Layout de login centralizado** e responsivo
 - **Validação de formulários** customizada
-- **Dashboard** administrativo básico
+- **Dashboard** com sidebar de navegação (Home, Compras, Vendas, Relatórios)
+- **Calendário de despesas** interativo com total mensal
+- **CRUD completo de despesas** (criar, visualizar, editar, excluir)
+- **Persistência local** com localStorage
+- **Despesas de hoje** com scroll e altura fixa
+- **Ações rápidas** com navegação funcional
+- **Modais de sucesso** para feedback do usuário
 - **17 casos de teste** automatizados com Playwright
 
 ### 🔄 Em Desenvolvimento
-- CRUD de notas fiscais
 - Gestão de produtos e estoque
 - Relatórios financeiros
 - Sistema de permissões
+- Backup/restore de dados
 
 ## 🛠️ Instalação e Execução
 
@@ -109,6 +115,31 @@ Tela de login moderna e centralizada com:
 - **Layout responsivo** para todos os dispositivos
 - **Feedback visual** para erros e sucessos
 
+## 📅 Calendário de Despesas
+
+Sistema completo de gestão de despesas com:
+
+- **Calendário interativo** para visualização mensal
+- **Indicadores visuais** para dias com despesas
+- **Modal de cadastro** - clique em dias vazios
+- **Modal de visualização** - clique em dias com despesas
+- **Edição inline** - botão de editar em cada despesa
+- **Exclusão imediata** - remoção instantânea do modal
+- **Persistência automática** - dados salvos no localStorage
+- **Navegação mensal** - botões para navegar entre meses
+- **Contadores de despesas** - badges com quantidade por dia
+
+## 🏠 Dashboard
+
+Interface organizada com navegação:
+
+- **Sidebar de navegação** - Home, Compras, Vendas, Relatórios
+- **Despesas de hoje** - lista com scroll e altura fixa
+- **Ações rápidas** - navegação funcional entre seções
+- **Calendário principal** - com total de despesas do mês
+- **Design responsivo** - adaptável a diferentes telas
+- **Telas placeholder** - Compras, Vendas e Relatórios preparadas
+
 ## 📊 API Endpoints
 
 ### Autenticação
@@ -135,9 +166,13 @@ Tela de login moderna e centralizada com:
 
 - **Design moderno** com tons de azul
 - **Login centralizado** com card elegante
-- **Dashboard administrativo** com navegação
+- **Dashboard com sidebar** - navegação organizada
+- **Calendário interativo** com total mensal
+- **Modais intuitivos** para gestão de despesas
+- **Ações rápidas funcionais** - navegação integrada
 - **Validação em tempo real** nos formulários
 - **Totalmente responsivo** para mobile e desktop
+- **Feedback visual** com modais de sucesso
 
 ## 🧪 Testes Automatizados
 
@@ -158,12 +193,13 @@ npm test
 
 ## 📝 Próximos Passos
 
-1. **Dashboard** - Implementar métricas e gráficos
-2. **Calendário MEI** - Mover para o dashboard pós-login
-3. **CRUD de notas fiscais** - Interface completa no frontend
-4. **Gestão de produtos** e controle de estoque
-5. **Relatórios financeiros** com visualizações
-6. **Sistema de permissões** por perfil de usuário
+1. **Relatórios financeiros** - Gráficos e análises de despesas
+2. **Categorias personalizadas** - Permitir criar categorias próprias
+3. **Despesas recorrentes** - Automatizar despesas mensais
+4. **Exportação de dados** - PDF/Excel dos relatórios
+5. **Backup na nuvem** - Sincronização de dados
+6. **Gestão de produtos** e controle de estoque
+7. **Sistema de permissões** por perfil de usuário
 
 ## 🤝 Contribuição
 

@@ -1,102 +1,144 @@
 # Status do Projeto - Gestor Empresarial
 
-## ✅ Concluído
-- [x] Sistema completo de autenticação JWT
-- [x] API RESTful com documentação Swagger
-- [x] Frontend Nuxt.js com Tailwind CSS
-- [x] Tela de login centralizada e responsiva
-- [x] Dashboard administrativo básico
-- [x] Validação de formulários em tempo real
-- [x] Layout moderno com card centralizado
-- [x] Configuração completa do ambiente
-- [x] Sistema testado e funcionando
-- [x] Suíte de testes automatizados Playwright
-- [x] 17 casos de teste implementados
-- [x] Regras de negócio documentadas
-- [x] Testes de validação extrema
-- [x] Testes de acessibilidade
-- [x] Testes de responsividade
+## 📊 Situação Atual
 
-## 🔄 Em Andamento
-- [ ] Dashboard com métricas e gráficos
-- [ ] Calendário MEI no dashboard
-- [ ] CRUD de notas fiscais no frontend
+### ✅ **Funcionalidades Implementadas**
 
-## 📋 Próximos Passos
+#### **Sistema de Autenticação**
+- Login centralizado com validação em tempo real
+- Registro de usuários
+- JWT para autenticação
+- Persistência de sessão
+- 17 casos de teste automatizados
 
-### Fase 1 - Backend Base
-- [x] Setup inicial do projeto Node.js + Express (JavaScript)
-- [x] Configuração do MySQL + Prisma
-- [x] Criação do schema inicial (notas fiscais)
-- [x] Implementação das rotas CRUD para notas fiscais
+#### **Dashboard Principal**
+- Layout limpo sem sidebar
+- Cards de métricas (Notas, Vendas, Compras, Despesas)
+- Interface responsiva e moderna
+- Header com logo e informações do usuário
 
-### Fase 2 - CRUD Notas Fiscais
-- [x] Backend CRUD completo
-- [ ] Tela de listagem de notas fiscais
-- [ ] Tela de cadastro de notas fiscais
-- [ ] Tela de edição de notas fiscais
+#### **Calendário de Despesas** 🆕
+- Calendário interativo mensal
+- Navegação entre meses
+- Indicadores visuais para dias com despesas
+- Badges com quantidade de despesas por dia
+- Clique em dias vazios para adicionar despesas
+- Clique em dias com despesas para visualizar
 
-### Fase 3 - Produtos e Estoque
-- [ ] Schema de produtos no banco
-- [ ] Rotas CRUD para produtos
-- [ ] Frontend para produtos
-- [ ] Sistema de controle de estoque
+#### **CRUD de Despesas** 🆕
+- **Criar**: Modal com formulário (valor + descrição)
+- **Visualizar**: Lista de despesas do dia selecionado
+- **Editar**: Botão de edição inline com modal
+- **Excluir**: Remoção imediata com confirmação
+- Persistência automática no localStorage
 
-### Fase 4 - Funcionalidades Avançadas
-- [ ] Sistema financeiro
-- [ ] Dashboard com gráficos
-- [ ] Sistema de usuários e permissões
-- [ ] Relatórios
+#### **Card "Despesas de Hoje"** 🆕
+- Lista compacta das despesas do dia atual
+- Altura fixa com scroll automático
+- Layout horizontal (descrição + valor)
+- Atualização em tempo real
 
-## 🎯 Próxima Tarefa
-**Implementar CRUD de notas fiscais no frontend**
+#### **Modais e Feedback** 🆕
+- Modal de cadastro/edição de despesas
+- Modal de visualização de despesas do dia
+- Modal de sucesso para ações (criar/editar/excluir)
+- Fechamento ao clicar fora do modal
+- Validações em tempo real
 
-## 🧪 Testes Implementados
-- **17 casos de teste** cobrindo:
-  - Validações de campos (obrigatórios, formato, tempo real)
-  - Autenticação (credenciais válidas/inválidas, loading)
-  - Layout responsivo (mobile, tablet, desktop)
-  - Acessibilidade (navegação por teclado)
-  - Persistência (localStorage, múltiplas tentativas)
-  - Validações extremas (emails/senhas longas)
-  - Validação em tempo real (email e senha)
+#### **Métricas Automáticas** 🆕
+- Card "Despesas" atualiza automaticamente
+- Soma total das despesas do mês atual
+- Sincronização com dados do calendário
 
-## 🚀 Para rodar o sistema completo:
+### 🔄 **Em Desenvolvimento**
+- Relatórios financeiros
+- Categorias personalizadas
+- Despesas recorrentes
+- Exportação de dados
+- Backup na nuvem
 
-### Backend (Porta 3000):
+### ❌ **Removido/Cancelado**
+- Sidebar de navegação (removido por não fazer sentido)
+- Tema claro/escuro (cancelado)
+- Funcionalidades Vendas/Compras no menu (cancelado)
+
+## 🏗️ **Arquitetura Atual**
+
+### **Frontend**
+- Nuxt.js + Vue 3 Composition API
+- Tailwind CSS para estilização
+- Layout sem sidebar - foco no conteúdo
+- Componentes reativos com localStorage
+
+### **Backend**
+- Node.js + Express.js
+- MySQL + Prisma ORM
+- JWT para autenticação
+- API RESTful com Swagger
+
+### **Dados**
+- Despesas armazenadas no localStorage
+- Estrutura: `{ id, dia, valor, categoria, descricao }`
+- Organização por mês/ano: `"2024-0": [despesas...]`
+- Persistência automática
+
+## 🧪 **Testes**
+
+### **Cobertura Atual**
+- ✅ Sistema de login: 17 casos de teste
+- ❌ Calendário de despesas: Não testado
+- ❌ CRUD de despesas: Não testado
+- ❌ Modais: Não testados
+
+### **Próximos Testes Necessários**
+1. Testes do calendário (navegação, cliques)
+2. Testes CRUD (criar, editar, excluir despesas)
+3. Testes de modais (abertura, fechamento)
+4. Testes de persistência (localStorage)
+
+## 🎯 **Próximas Prioridades**
+
+### **Curto Prazo**
+1. Implementar testes para novas funcionalidades
+2. Adicionar categorias personalizadas
+3. Melhorar validações do formulário
+
+### **Médio Prazo**
+1. Relatórios e gráficos de despesas
+2. Despesas recorrentes
+3. Exportação de dados
+
+### **Longo Prazo**
+1. Sincronização na nuvem
+2. App mobile
+3. Múltiplos usuários
+
+## 📈 **Métricas do Projeto**
+
+- **Linhas de código**: ~800 (frontend)
+- **Componentes**: 2 principais (Login, Dashboard)
+- **Funcionalidades**: 8 implementadas
+- **Testes**: 17 casos automatizados
+- **Tempo de desenvolvimento**: 3 semanas
+- **Status**: 70% completo para MVP
+
+## 🚀 **Como Executar**
+
 ```bash
-cd backend
-npm install
-npx prisma migrate dev --name init
-npm run dev
+# Backend
+cd backend && npm run dev
+
+# Frontend  
+cd frontend && npm run dev -- --port 3001
+
+# Testes
+npm test
 ```
 
-### Frontend Nuxt (Porta 3001):
-```bash
-cd frontend
-npm install
-npm run dev -- --port 3001
-```
-
-## 🌐 URLs de Acesso:
-- **Frontend**: http://localhost:3001
-- **Backend API**: http://localhost:3000
-- **Swagger Docs**: http://localhost:3000/api-docs
-
-## 🔐 Para testar login:
-1. Registre usuário via Swagger ou Postman
-2. Use credenciais no frontend
-
-## 🎯 Próxima Sprint - Dashboard:
-- **Métricas financeiras** em tempo real
-- **Calendário MEI** interativo
-- **CRUD de notas fiscais** completo
-- **Gráficos** e visualizações
-- **Cards dinâmicos** com dados reais
-
-## 📖 Documentação Criada
-- **Swagger UI**: http://localhost:3000/api-docs
-- **Postman Collection**: `postman_collection.json`
+**URLs:**
+- Frontend: http://localhost:3001
+- Backend: http://localhost:3000
+- Swagger: http://localhost:3000/api-docs
 
 ---
-*Última atualização: $(date)*
+*Última atualização: Dezembro 2024*

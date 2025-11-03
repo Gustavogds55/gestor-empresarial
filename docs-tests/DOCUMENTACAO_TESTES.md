@@ -89,6 +89,10 @@ npx playwright test --project=chromium
 - ✅ Interface responsiva
 - ✅ Acessibilidade básica
 - ✅ Persistência de dados
+- ❌ Sidebar de navegação (não testada)
+- ❌ Dashboard com calendário (não testado)
+- ❌ CRUD de despesas (não testado)
+- ❌ Ações rápidas funcionais (não testadas)
 
 ### **Tipos de Teste**
 - **Funcionais**: 12 casos
@@ -100,12 +104,21 @@ npx playwright test --project=chromium
 ### **Limitações Atuais**
 - Não testa backend offline extensivamente
 - Não testa múltiplos browsers simultaneamente
-- Calendário MEI será implementado no dashboard
+- **Sidebar de navegação não testada** (nova funcionalidade)
+- **Calendário de despesas não testado** (nova funcionalidade)
+- **CRUD de despesas não testado** (nova funcionalidade)
+- **Modais não testados** (nova funcionalidade)
+- **Ações rápidas não testadas** (navegação)
 
 ### **Melhorias Futuras**
+- **Testes da sidebar** - Navegação entre seções
+- **Testes do calendário** - Navegação, cliques, modais
+- **Testes CRUD despesas** - Criar, editar, excluir
+- **Testes de ações rápidas** - Navegação funcional
+- **Testes de persistência** - localStorage das despesas
+- **Testes de modais** - Abertura, fechamento, validações
 - Testes de integração com API
 - Testes de performance mais robustos
-- Testes de segurança avançados
 - Cobertura de código automatizada
 
 ## 📝 Manutenção dos Testes
