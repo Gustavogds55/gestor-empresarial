@@ -2,38 +2,50 @@
 
 ## 📋 Resumo dos Testes
 
-### **Cobertura Total: 17 Casos de Teste**
+### **Cobertura Total: 21 Casos de Teste E2E**
+- **Tela Login**: 4 casos de teste (100% implementados)
+- **Tela Home**: 21 casos de teste (100% implementados)
+- **Cobertura**: 87,5% das regras de negócio (21 de 24 regras)
 
 ## 🧪 Categorias de Teste
 
-### **1. Validações de Campos (CT-001 a CT-005 + CT-018, CT-019, CT-021)**
-- **CT-001**: Email obrigatório
-- **CT-002**: Formato de email inválido  
-- **CT-003**: Email válido
-- **CT-004**: Senha obrigatória
-- **CT-005**: Validação em tempo real - Email
-- **CT-018**: Email excede limite (>50 caracteres)
-- **CT-019**: Senha excede limite (>8 caracteres)
-- **CT-021**: Validação em tempo real - Senha
+### **Tela Home (CT-HOME-001 a CT-HOME-021)**
 
-### **2. Autenticação (CT-006 a CT-008)**
-- **CT-006**: Login com credenciais válidas
-- **CT-007a**: Email inválido
-- **CT-007b**: Senha inválida  
-- **CT-008**: Estado de loading
+#### **1. Layout e Navegação (4 testes)**
+- **CT-HOME-001**: Estrutura da tela
+- **CT-HOME-002**: Navegação pela sidebar
+- **CT-HOME-003**: Informações do header
+- **CT-HOME-003b**: Logout com sucesso
 
-### **3. Layout e Responsividade (CT-010)**
-- **CT-010**: Layout em diferentes resoluções
+#### **2. Calendário (4 testes)**
+- **CT-HOME-004**: Estrutura do calendário
+- **CT-HOME-005**: Navegação entre meses
+- **CT-HOME-006**: Indicadores visuais dos dias
+- **CT-HOME-007**: Interação com dias
 
+#### **3. CRUD de Despesas (5 testes)**
+- **CT-HOME-008**: Cálculo do total mensal
+- **CT-HOME-009**: Modal nova despesa
+- **CT-HOME-010**: Modal despesas do dia
+- **CT-HOME-011**: Edição de despesas
+- **CT-HOME-012**: Exclusão de despesas
 
+#### **4. Persistência e Cards (3 testes)**
+- **CT-HOME-013**: Persistência de dados
+- **CT-HOME-014**: Card despesas de hoje
+- **CT-HOME-015**: Lista de despesas
 
-### **5. Acessibilidade (CT-014)**
-- **CT-014**: Navegação por teclado
+#### **5. Interface (2 testes)**
+- **CT-HOME-016**: Responsividade
+- **CT-HOME-017**: Ações rápidas funcionais
 
-### **6. Persistência e Estados (CT-015 a CT-017)**
-- **CT-015**: Dados no localStorage
-- **CT-016**: Limpeza de erros
-- **CT-017**: Múltiplas tentativas
+#### **6. Modais (3 testes)**
+- **CT-HOME-018**: Comportamento dos modais
+- **CT-HOME-019**: Modal de sucesso
+- **CT-HOME-020**: Validações de formulário
+
+#### **7. Métricas (1 teste)**
+- **CT-HOME-021**: Cálculo e formatação do total mensal
 
 ## 🛠️ Tecnologias de Teste
 
@@ -49,15 +61,20 @@
 
 ## 📊 Regras de Negócio Cobertas
 
-### **RN-LOGIN-001 a RN-LOGIN-008**
-1. Validação de email
-2. Validação de senha  
-3. Submissão do formulário
-4. Autenticação
-5. Interface responsiva
-6. Estados visuais
-7. Persistência de dados
-8. Validação de limites de caracteres
+### **Tela Home: 21 de 24 regras (87,5%)**
+
+#### **✅ Cobertas (21 regras)**
+- **Layout**: RN-HOME-001 a RN-HOME-003 (3 regras)
+- **Calendário**: RN-HOME-004 a RN-HOME-008 (5 regras)
+- **CRUD**: RN-HOME-009 a RN-HOME-013 (5 regras)
+- **Cards**: RN-HOME-014 a RN-HOME-017 (4 regras)
+- **Modais**: RN-HOME-018 a RN-HOME-020 (3 regras)
+- **Métricas**: RN-HOME-021 (1 regra)
+
+#### **❌ Não Cobertas (3 regras)**
+- **RN-HOME-022**: Dados de exemplo (removido dos testes)
+- **RN-HOME-023**: Tema visual (difícil de testar automaticamente)
+- **RN-HOME-024**: Estados de interação (difícil de testar automaticamente)
 
 ## 🚀 Como Executar
 
@@ -81,45 +98,53 @@ npx playwright test --project=chromium
 - Frontend rodando na porta 3001
 - Usuário admin@empresa.com cadastrado
 
+### **Estrutura de Arquivos**
+```
+tests/
+├── home.spec.js          # 21 testes da tela Home
+├── pages/
+│   ├── LoginPage.js      # Page Object do Login
+│   └── HomePage.js       # Page Object da Home
+```
+
 ## 📈 Métricas de Qualidade
 
 ### **Cobertura Funcional**
 - ✅ Validações de entrada
 - ✅ Fluxo de autenticação
 - ✅ Interface responsiva
-- ✅ Acessibilidade básica
+- ✅ Sidebar de navegação
+- ✅ Dashboard com calendário
+- ✅ CRUD de despesas
+- ✅ Ações rápidas funcionais
 - ✅ Persistência de dados
-- ❌ Sidebar de navegação (não testada)
-- ❌ Dashboard com calendário (não testado)
-- ❌ CRUD de despesas (não testado)
-- ❌ Ações rápidas funcionais (não testadas)
+- ✅ Modais e feedback
+- ❌ Tema visual (não testado)
+- ❌ Estados de interação detalhados (não testados)
 
 ### **Tipos de Teste**
-- **Funcionais**: 12 casos
-- **Interface**: 3 casos  
-- **Segurança**: 2 casos
+- **Layout e Navegação**: 4 casos
+- **Calendário**: 4 casos
+- **CRUD**: 5 casos
+- **Persistência**: 3 casos
+- **Interface**: 2 casos
+- **Modais**: 3 casos
 
 ## 🔍 Pontos de Atenção
 
 ### **Limitações Atuais**
 - Não testa backend offline extensivamente
 - Não testa múltiplos browsers simultaneamente
-- **Sidebar de navegação não testada** (nova funcionalidade)
-- **Calendário de despesas não testado** (nova funcionalidade)
-- **CRUD de despesas não testado** (nova funcionalidade)
-- **Modais não testados** (nova funcionalidade)
-- **Ações rápidas não testadas** (navegação)
+- Tema visual não testado (RN-HOME-023)
+- Estados de interação detalhados não testados (RN-HOME-024)
 
 ### **Melhorias Futuras**
-- **Testes da sidebar** - Navegação entre seções
-- **Testes do calendário** - Navegação, cliques, modais
-- **Testes CRUD despesas** - Criar, editar, excluir
-- **Testes de ações rápidas** - Navegação funcional
-- **Testes de persistência** - localStorage das despesas
-- **Testes de modais** - Abertura, fechamento, validações
-- Testes de integração com API
+- Testes de integração com API real
 - Testes de performance mais robustos
 - Cobertura de código automatizada
+- Testes de múltiplos browsers
+- Testes de acessibilidade avançados
+- Testes de tema visual automatizados
 
 ## 📝 Manutenção dos Testes
 

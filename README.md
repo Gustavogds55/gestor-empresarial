@@ -31,7 +31,7 @@ Sistema de gestão de despesas com foco em MEI (Microempreendedor Individual), d
 - **Despesas de hoje** com scroll e altura fixa
 - **Ações rápidas** com navegação funcional
 - **Modais de sucesso** para feedback do usuário
-- **17 casos de teste** automatizados com Playwright
+- **21 casos de teste E2E** automatizados com Playwright
 
 ### 🔄 Em Desenvolvimento
 - Gestão de produtos e estoque
@@ -176,9 +176,9 @@ Interface organizada com navegação:
 
 ## 🧪 Testes Automatizados
 
-- **17 casos de teste** implementados com Playwright
-- **Cobertura completa** do sistema de login
-- **Testes de validação, autenticação e responsividade**
+- **21 casos de teste E2E** implementados com Playwright
+- **Cobertura de 87,5%** das regras de negócio (21 de 24 regras)
+- **Testes de login, dashboard, calendário, CRUD e responsividade**
 - **Execução local** com feedback detalhado
 
 ### Executar Testes

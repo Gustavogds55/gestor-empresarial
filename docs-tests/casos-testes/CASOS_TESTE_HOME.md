@@ -14,6 +14,7 @@
   - Sidebar fixa visível
   - Conteúdo ocupa espaço restante
   - Layout responsivo funcional
+- **Status**: ✅ Implementado (CT-HOME-001)
 
 ### CT-HOME-002: Navegação pela Sidebar
 **Cenário**: Testar navegação entre seções
@@ -30,6 +31,7 @@
   - Navegação funcional entre todas as seções
   - Item ativo destacado em azul
   - Título do header atualizado
+- **Status**: ✅ Implementado (CT-HOME-002)
 
 ### CT-HOME-003: Informações do Header
 **Cenário**: Validar dados do usuário no header
@@ -43,6 +45,19 @@
 - **Resultado Esperado**: 
   - Todas as informações visíveis e corretas
   - Avatar com primeira letra do nome
+- **Status**: ✅ Implementado (CT-HOME-003)
+
+### CT-HOME-003b: Logout com Sucesso
+**Cenário**: Testar funcionalidade de logout
+- **Pré-condições**: Usuário logado
+- **Passos**:
+  1. Clicar no botão "Sair"
+  2. Verificar redirecionamento para login
+  3. Verificar elementos da Home não visíveis
+- **Resultado Esperado**: 
+  - Logout realizado com sucesso
+  - Redirecionamento para tela de login
+- **Status**: ✅ Implementado (CT-HOME-003b)
 
 ## 📅 CALENDÁRIO DE DESPESAS
 
@@ -58,6 +73,7 @@
 - **Resultado Esperado**: 
   - Todos os elementos visíveis
   - Total do mês formatado corretamente
+- **Status**: ✅ Implementado (CT-HOME-004)
 
 ### CT-HOME-005: Navegação Entre Meses
 **Cenário**: Testar controles de navegação mensal
@@ -72,6 +88,7 @@
   - Navegação fluida entre meses
   - Total atualizado automaticamente
   - Dados mantidos ao navegar
+- **Status**: ✅ Implementado (CT-HOME-005)
 
 ### CT-HOME-006: Indicadores Visuais dos Dias
 **Cenário**: Validar estados visuais dos dias
@@ -85,6 +102,7 @@
 - **Resultado Esperado**: 
   - Indicadores visuais corretos
   - Diferenciação clara entre estados
+- **Status**: ✅ Implementado (CT-HOME-006)
 
 ### CT-HOME-007: Interação com Dias do Calendário
 **Cenário**: Testar cliques nos dias
@@ -99,10 +117,26 @@
 - **Resultado Esperado**: 
   - Modais corretos para cada tipo de dia
   - Dias de outros meses não clicáveis
+- **Status**: ✅ Implementado (CT-HOME-007)
 
 ## 💰 CRUD DE DESPESAS
 
-### CT-HOME-008: Modal Nova Despesa
+### CT-HOME-008: Cálculo do Total Mensal
+**Cenário**: Verificar soma das despesas
+- **Pré-condições**: Mês com despesas cadastradas
+- **Passos**:
+  1. Verificar total inicial do mês
+  2. Adicionar nova despesa
+  3. Verificar atualização do total
+  4. Adicionar segunda despesa
+  5. Verificar soma correta
+- **Resultado Esperado**: 
+  - Cálculo automático correto
+  - Formatação em reais brasileiros
+  - Atualização em tempo real
+- **Status**: ✅ Implementado (CT-HOME-008)
+
+### CT-HOME-009: Modal Nova Despesa
 **Cenário**: Cadastrar nova despesa
 - **Pré-condições**: Modal "Nova Despesa" aberto
 - **Passos**:
@@ -115,8 +149,9 @@
   - Despesa salva com sucesso
   - Modal de sucesso exibido
   - Calendário atualizado
+- **Status**: ✅ Implementado (CT-HOME-009)
 
-### CT-HOME-009: Modal Despesas do Dia
+### CT-HOME-010: Modal Despesas do Dia
 **Cenário**: Visualizar despesas existentes
 - **Pré-condições**: Dia com despesas selecionado
 - **Passos**:
@@ -128,8 +163,9 @@
 - **Resultado Esperado**: 
   - Todas as despesas listadas
   - Botões de ação funcionais
+- **Status**: ✅ Implementado (CT-HOME-010)
 
-### CT-HOME-010: Edição de Despesas
+### CT-HOME-011: Edição de Despesas
 **Cenário**: Editar despesa existente
 - **Pré-condições**: Modal com despesas aberto
 - **Passos**:
@@ -142,8 +178,9 @@
   - Formulário preenchido com dados atuais
   - Alterações salvas com sucesso
   - Interface atualizada imediatamente
+- **Status**: ✅ Implementado (CT-HOME-011)
 
-### CT-HOME-011: Exclusão de Despesas
+### CT-HOME-012: Exclusão de Despesas
 **Cenário**: Excluir despesa
 - **Pré-condições**: Modal com despesas aberto
 - **Passos**:
@@ -155,10 +192,26 @@
   - Exclusão sem confirmação adicional
   - Remoção instantânea da interface
   - Total do mês atualizado
+- **Status**: ✅ Implementado (CT-HOME-012)
 
 ## 🏠 CARDS LATERAIS
 
-### CT-HOME-012: Card Despesas de Hoje
+### CT-HOME-013: Persistência de Dados
+**Cenário**: Validar armazenamento no localStorage
+- **Pré-condições**: Despesas cadastradas
+- **Passos**:
+  1. Cadastrar despesa
+  2. Verificar salvamento no localStorage
+  3. Verificar estrutura ano-mês como chave
+  4. Recarregar página
+  5. Verificar carregamento automático
+- **Resultado Esperado**: 
+  - Dados salvos automaticamente
+  - Estrutura JSON correta
+  - Carregamento ao iniciar
+- **Status**: ✅ Implementado (CT-HOME-013)
+
+### CT-HOME-014: Card Despesas de Hoje
 **Cenário**: Verificar despesas do dia atual
 - **Pré-condições**: Tela Home carregada
 - **Passos**:
@@ -171,8 +224,37 @@
   - Card com altura fixa
   - Scroll quando necessário
   - Apenas despesas de hoje
+- **Status**: ✅ Implementado (CT-HOME-014)
 
-### CT-HOME-013: Ações Rápidas Funcionais
+### CT-HOME-015: Lista de Despesas
+**Cenário**: Exibição das despesas do dia atual
+- **Pré-condições**: Despesas cadastradas para hoje
+- **Passos**:
+  1. Verificar layout horizontal
+  2. Verificar formatação de valores
+  3. Editar despesa
+  4. Verificar atualização em tempo real
+- **Resultado Esperado**: 
+  - Cards compactos
+  - Valores em reais
+  - Atualização instantânea
+- **Status**: ✅ Implementado (CT-HOME-015)
+
+### CT-HOME-016: Responsividade
+**Cenário**: Adaptação para diferentes telas
+- **Pré-condições**: Tela Home carregada
+- **Passos**:
+  1. Testar em desktop (1280px)
+  2. Testar em tablet (768px)
+  3. Testar em mobile (375px)
+  4. Verificar usabilidade do calendário
+- **Resultado Esperado**: 
+  - Layout adaptável
+  - Sidebar responsiva
+  - Calendário mantém usabilidade
+- **Status**: ✅ Implementado (CT-HOME-016)
+
+### CT-HOME-017: Ações Rápidas Funcionais
 **Cenário**: Testar navegação das ações rápidas
 - **Pré-condições**: Card "Ações Rápidas" visível
 - **Passos**:
@@ -187,10 +269,11 @@
 - **Resultado Esperado**: 
   - Navegação funcional para todas as telas
   - Botões com hover effects
+- **Status**: ✅ Implementado (CT-HOME-017)
 
 ## 🔔 MODAIS E FEEDBACK
 
-### CT-HOME-014: Comportamento dos Modais
+### CT-HOME-018: Comportamento dos Modais
 **Cenário**: Testar padrões gerais dos modais
 - **Pré-condições**: Modal aberto
 - **Passos**:
@@ -205,8 +288,9 @@
   - Fecha ao clicar fora
   - Fecha com botão X
   - Não fecha ao clicar no conteúdo
+- **Status**: ✅ Implementado (CT-HOME-018)
 
-### CT-HOME-015: Modal de Sucesso
+### CT-HOME-019: Modal de Sucesso
 **Cenário**: Verificar feedback de ações
 - **Pré-condições**: Ação realizada (criar/editar/excluir)
 - **Passos**:
@@ -219,8 +303,9 @@
   - Modal com visual correto
   - Mensagens específicas por ação
   - Auto-fechamento funcional
+- **Status**: ✅ Implementado (CT-HOME-019)
 
-### CT-HOME-016: Validações de Formulário
+### CT-HOME-020: Validações de Formulário
 **Cenário**: Testar validações em tempo real
 - **Pré-condições**: Modal de despesa aberto
 - **Passos**:
@@ -236,48 +321,41 @@
   - Validações em tempo real
   - Botão desabilitado quando inválido
   - Mensagens de erro claras
+- **Status**: ✅ Implementado (CT-HOME-020)
 
 ## 📊 MÉTRICAS E RESPONSIVIDADE
 
-### CT-HOME-017: Cálculo do Total Mensal
-**Cenário**: Verificar soma das despesas
+### CT-HOME-021: Cálculo e Formatação do Total Mensal
+**Cenário**: Verificar soma e formatação das despesas
 - **Pré-condições**: Mês com despesas cadastradas
 - **Passos**:
   1. Verificar total inicial do mês
-  2. Adicionar nova despesa
+  2. Adicionar primeira despesa (R$ 100,50)
   3. Verificar atualização do total
-  4. Editar despesa existente
-  5. Verificar recálculo
-  6. Excluir despesa
-  7. Verificar nova soma
+  4. Adicionar segunda despesa (R$ 250,75)
+  5. Verificar soma correta (R$ 351,25)
+  6. Verificar formatação brasileira
 - **Resultado Esperado**: 
   - Cálculo automático correto
   - Formatação em reais brasileiros
   - Atualização em tempo real
-
-### CT-HOME-018: Responsividade da Interface
-**Cenário**: Testar adaptação para diferentes telas
-- **Pré-condições**: Tela Home carregada
-- **Passos**:
-  1. Redimensionar para mobile (320px)
-  2. Verificar layout em coluna única
-  3. Redimensionar para tablet (768px)
-  4. Verificar reorganização automática
-  5. Redimensionar para desktop (1024px+)
-  6. Verificar grid 1/3 + 2/3
-- **Resultado Esperado**: 
-  - Layout adaptável
-  - Sidebar responsiva
-  - Calendário mantém usabilidade
+- **Status**: ✅ Implementado (CT-HOME-021)
 
 ---
 
 ## 📝 **Resumo dos Casos de Teste**
-- **Layout e Navegação**: 3 casos (CT-HOME-001 a CT-HOME-003)
-- **Calendário**: 4 casos (CT-HOME-004 a CT-HOME-007)
-- **CRUD Despesas**: 4 casos (CT-HOME-008 a CT-HOME-011)
-- **Cards Laterais**: 2 casos (CT-HOME-012 a CT-HOME-013)
-- **Modais**: 3 casos (CT-HOME-014 a CT-HOME-016)
-- **Métricas**: 2 casos (CT-HOME-017 a CT-HOME-018)
+- **Layout e Navegação**: 4 casos (CT-HOME-001 a CT-HOME-003b) - ✅ 100% implementados
+- **Calendário**: 4 casos (CT-HOME-004 a CT-HOME-007) - ✅ 100% implementados
+- **CRUD Despesas**: 5 casos (CT-HOME-008 a CT-HOME-012) - ✅ 100% implementados
+- **Persistência e Cards**: 3 casos (CT-HOME-013 a CT-HOME-015) - ✅ 100% implementados
+- **Interface**: 2 casos (CT-HOME-016 a CT-HOME-017) - ✅ 100% implementados
+- **Modais**: 3 casos (CT-HOME-018 a CT-HOME-020) - ✅ 100% implementados
+- **Métricas**: 1 caso (CT-HOME-021) - ✅ 100% implementado
 
-**Total: 18 casos de teste para a tela Home**
+**Total: 21 casos de teste implementados para a tela Home**
+**Cobertura: 87,5% das regras de negócio (21 de 24 regras)**
+
+### Regras Não Testadas
+- **RN-HOME-022**: Dados de Exemplo - Removido dos testes
+- **RN-HOME-023**: Tema Visual - Difícil de testar automaticamente
+- **RN-HOME-024**: Estados de Interação - Difícil de testar automaticamente
