@@ -341,9 +341,14 @@
                   type="number" 
                   step="0.01" 
                   placeholder="0,00"
-                  class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                  required
+                  :class="[
+                    'w-full px-3 py-2 border rounded-md focus:outline-none focus:ring-2',
+                    errosFormulario.valor ? 'border-red-300 focus:ring-red-500' : 'border-gray-300 focus:ring-blue-500'
+                  ]"
+                  @blur="validarCampo('valor')"
+                  @input="validarCampo('valor')"
                 >
+                <p v-if="errosFormulario.valor" class="text-red-500 text-sm mt-1">{{ errosFormulario.valor }}</p>
               </div>
 
               <div>
@@ -365,7 +370,13 @@
                 </button>
                 <button 
                   type="submit" 
-                  class="flex-1 px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+                  :disabled="errosFormulario.valor || !formularioDespesa.valor"
+                  :class="[
+                    'flex-1 px-4 py-2 rounded-md transition-colors',
+                    (errosFormulario.valor || !formularioDespesa.valor)
+                      ? 'bg-gray-400 text-gray-200 cursor-not-allowed' 
+                      : 'bg-blue-600 text-white hover:bg-blue-700'
+                  ]"
                 >
                   {{ modoModal === 'editar' ? 'Atualizar' : 'Salvar' }}
                 </button>
@@ -410,7 +421,7 @@
             </div>
             <div class="flex space-x-3 pt-4">
               <button 
-                @click="modoModal = 'adicionar'; formularioDespesa = { valor: '', descricao: '' }; despesaEditando = null" 
+                @click="modoModal = 'adicionar'; formularioDespesa = { valor: '', descricao: '' }; despesaEditando = null; limparErros()" 
                 class="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
               >
                 + Nova Despesa
@@ -511,6 +522,25 @@ const formularioDespesa = ref({
   valor: '',
   descricao: ''
 })
+
+// Validação do formulário
+const errosFormulario = ref({
+  valor: ''
+})
+
+const validarCampo = (campo) => {
+  if (campo === 'valor') {
+    if (!formularioDespesa.value.valor || formularioDespesa.value.valor === '') {
+      errosFormulario.value.valor = 'Campo obrigatório'
+    } else {
+      errosFormulario.value.valor = ''
+    }
+  }
+}
+
+const limparErros = () => {
+  errosFormulario.value.valor = ''
+}
 
 
 
@@ -646,6 +676,7 @@ const mostrarDetalhes = (dia) => {
   if (!dia.doMesAtual) return
   
   diaSelecionado.value = dia
+  limparErros()
   
   if (dia.temObrigacao) {
     modoModal.value = 'visualizar'
@@ -664,6 +695,7 @@ const editarDespesa = (despesa) => {
     descricao: despesa.descricao
   }
   modoModal.value = 'editar'
+  limparErros()
 }
 
 const mostrarSucesso = (titulo, mensagem) => {
@@ -681,10 +713,12 @@ const fecharModal = () => {
   modalAberto.value = false
   diaSelecionado.value = null
   despesaEditando.value = null
+  limparErros()
 }
 
 const salvarDespesa = () => {
-  if (!formularioDespesa.value.valor) return
+  validarCampo('valor')
+  if (errosFormulario.value.valor) return
   
   const chave = `${anoAtualIndex.value}-${mesAtualIndex.value}`
   
